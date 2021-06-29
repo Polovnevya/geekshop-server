@@ -1,14 +1,20 @@
 from django.shortcuts import render
 import json
 from pathlib import Path
-
+from django.utils.datetime_safe import datetime
 
 # Create your views here.
 
 
+
 def index(request):
     context = {
-        'title': 'главная'
+
+        "title": "GeekShop",
+        "date_time": datetime.now(),
+        "username": "Иван Иванов",
+        "is_promotion": 1,
+        "promotion_text": "Бесплатная доставка по всему миру! Аутлет: до -70% Собственный бренд. -20% новым покупателям."
     }
     return render(request, './products/index.html', context)
 
