@@ -23,7 +23,7 @@ def products(request):
         "title": "Каталог товаров GeekShop",
         "date_time": timezone.now,
     }
-    context['products'] = Product.objects.values()
-    context['categories'] = ProductCategory.objects.values()
+    context['products'] = Product.objects.all()
+    context['categories'] = ProductCategory.objects.all()
 
     return render(request, './products/products.html', context)
