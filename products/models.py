@@ -8,10 +8,8 @@ from django.utils import timezone
 class AbstractBaseModel(models.Model):
     id = models.BigAutoField(primary_key=True)
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(null=True, default=None)
-    deleted_at = models.DateTimeField(
-        null=True, default=None
-    )
+    updated_at = models.DateTimeField(null=True, default=None, blank=True)
+    deleted_at = models.DateTimeField(null=True, default=None, blank=True)
 
     def delete(self, *args, **kwargs):
         self.deleted_at = timezone.now()
