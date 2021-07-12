@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect
-from users.forms import UserLoginForm, UserRegistrationForm
+from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from django.contrib import auth, messages
 from django.urls import reverse
 
@@ -48,7 +48,9 @@ def logout(request):
 
 
 def profile(request):
+    form = UserProfileForm(instance=request.user)
     context = {
-        'title': 'Личный кабинет'
+        'title': 'Geekshop - личный кабинет',
+        'form': form
     }
     return render(request, 'users/profile.html', context)
