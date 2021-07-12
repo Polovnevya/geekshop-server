@@ -45,3 +45,10 @@ def registration(request):
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('products:index'))
+
+
+def profile(request):
+    context = {
+        'title': 'Личный кабинет'
+    }
+    return render(request, 'users/profile.html', context)
