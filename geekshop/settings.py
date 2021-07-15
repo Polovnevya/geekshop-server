@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'products',
     'users',
     'baskets',
+    'adminapp',
+
 ]
 
 MIDDLEWARE = [
