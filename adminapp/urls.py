@@ -15,13 +15,14 @@ Including another URLconf
 """
 
 from django.urls import path
-from .views import index, admin_users_read, admin_users_create, admin_users_update_delete
+from .views import index, admin_users_read, admin_users_create, admin_users_update, admin_users_delete
 
 app_name = 'adminapp'
 urlpatterns = [
     path('', index, name='index'),
     path('users', admin_users_read, name='admin_users_read'),
-    path('users_create', admin_users_create, name='admin_users_create'),
-    path('users_update_delete', admin_users_update_delete, name='admin_users_update_delete'),
+    path('users/create/', admin_users_create, name='admin_users_create'),
+    path('users/update/<int:id>', admin_users_update, name='admin_users_update'),
+    path('users/delete/<int:id>', admin_users_delete, name='admin_users_delete'),
 
 ]
