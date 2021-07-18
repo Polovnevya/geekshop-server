@@ -14,7 +14,7 @@ def index(request):
     }
     return render(request, './adminapp/index.html', context)
 
-
+######################################################################
 @user_passes_test(lambda u: u.is_staff)
 def admin_users_read(request):
     context = {
@@ -116,3 +116,4 @@ def admin_category_delete(request, id):
     category = ProductCategory.objects.get(pk=id, deleted_at=None)
     category.delete()
     return HttpResponseRedirect(reverse('adminapp:admin_category_read'))
+######################################################################
