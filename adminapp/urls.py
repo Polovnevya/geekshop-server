@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.urls import path
 from .views import index, admin_users_read, admin_users_create, admin_users_update, admin_users_delete, \
-    admin_category_read, admin_category_create
+    admin_category_read, admin_category_create, admin_category_update, admin_category_delete
 
 app_name = 'adminapp'
 urlpatterns = [
@@ -29,7 +29,7 @@ urlpatterns = [
 
     path('category/', admin_category_read, name='admin_category_read'),
     path('category/create/', admin_category_create, name='admin_category_create'),
-    path('category/update/<int:id>', admin_users_update, name='admin_users_update'),
-    path('category/delete/<int:id>', admin_users_delete, name='admin_users_delete'),
+    path('category/update/<int:id>/', admin_category_update, name='admin_category_update'),
+    path('category/delete/<int:id>/', admin_category_delete, name='admin_category_delete'),
 
 ]
