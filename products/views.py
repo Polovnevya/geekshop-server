@@ -3,7 +3,6 @@ from django.utils import timezone
 from .models import Product, ProductCategory
 
 
-
 # Create your views here.
 
 
@@ -19,11 +18,14 @@ def index(request):
     return render(request, './products/index.html', context)
 
 
-def products(request):
+def products(request, category_id=None):
     context = {
         "title": "Каталог товаров GeekShop",
         "date_time": timezone.now,
+        'categories': ProductCategory.objects.all(),
     }
-    context['products'] = Product.objects.all()
-    context['categories'] = ProductCategory.objects.all()
+    if category_id:
+        context['products'] = Product.objects.filter(category_id=category_id)
+    else:
+        context['products'] = Product.objects.all()
     return render(request, './products/products.html', context)
